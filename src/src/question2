@@ -1,0 +1,225 @@
+2(i)Establish a One-to-Many relationship between the Department and Employee table?
+ans--mysql> desc department;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| did      | int         | NO   | PRI | NULL    |       |
+| dname    | varchar(20) | YES  |     | NULL    |       |
+| location | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.04 sec)
+
+
+mysql> desc employee;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| empId   | int         | NO   | PRI | NULL    |       |
+| ename   | varchar(12) | YES  |     | NULL    |       |
+| address | varchar(12) | YES  |     | NULL    |       |
+| mobile  | varchar(12) | YES  |     | NULL    |       |
+| deptid  | int         | YES  | MUL | NULL    |       |
+| salary  | int         | NO   |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+
+mysql> desc employee;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| empId   | int         | NO   | PRI | NULL    |       |
+| ename   | varchar(12) | YES  |     | NULL    |       |
+| address | varchar(12) | YES  |     | NULL    |       |
+| mobile  | varchar(12) | YES  |     | NULL    |       |
+| deptid  | int         | YES  | MUL | NULL    |       |
+| salary  | int         | NO   |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+
+
+
+2(ii)Using SQL insert 4 Department records in the Department table(Account, Sales,
+Marketing, HR)?
+
+mysql> select * from department;
++-----+-----------+----------+
+| did | dname     | location |
++-----+-----------+----------+
+|  10 | marketing | delhi    |
+|  20 | sales     | pune     |
+|  30 | Accounts  | banglore |
+|  40 | HR        | mumbai   |
++-----+-----------+----------+
+4 rows in set (0.03 sec)
+
+
+2(iii)Using SQL register 2 employees in Accounts Department?
+ans--
+mysql> select * from department;
++-----+-----------+----------+
+| did | dname     | location |
++-----+-----------+----------+
+|  10 | marketing | delhi    |
+|  20 | sales     | pune     |
+|  30 | Accounts  | banglore |
+|  40 | HR        | mumbai   |
++-----+-----------+----------+
+4 rows in set (0.03 sec)
+
+mysql> select * from employee;
++-------+---------+---------+----------+--------+--------+
+| empId | ename   | address | mobile   | deptid | salary |
++-------+---------+---------+----------+--------+--------+
+|    30 | shubham | pune    | 2655     |     30 |  50000 |
+|    40 | sujeet  | mumbai  | 66546544 |     30 |  50000 |
++-------+---------+---------+----------+--------+--------+
+2 rows in set (0.03 sec)
+
+2(iv)Using SQL register 3 employees in Sales Department?
+mysql> insert into employee values(50,'Tomar','UP','111166562',20,60000);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into employee values(60,'vibhor','BIJNOR','111166562',20,60000);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into employee values(70,'farhan','dehradun','111166562',20,60000);
+Query OK, 1 row affected (0.09 sec)
+mysql> select * from employee;
++-------+---------+----------+-----------+--------+--------+
+| empId | ename   | address  | mobile    | deptid | salary |
++-------+---------+----------+-----------+--------+--------+
+|    30 | shubham | pune     | 2655      |     30 |  50000 |
+|    40 | sujeet  | mumbai   | 66546544  |     30 |  50000 |
+|    50 | Tomar   | UP       | 111166562 |     20 |  60000 |
+|    60 | vibhor  | BIJNOR   | 111166562 |     20 |  60000 |
+|    70 | farhan  | dehradun | 111166562 |     20 |  60000 |
++-------+---------+----------+-----------+--------+--------+
+
+mysql> select * from department;
++-----+-----------+----------+
+| did | dname     | location |
++-----+-----------+----------+
+|  10 | marketing | delhi    |
+|  20 | sales     | pune     |
+|  30 | Accounts  | banglore |
+|  40 | HR        | mumbai   |
++-----+-----------+----------+
+4 rows in set (0.00 sec)
+
+
+
+2(v)Using SQL register 2 employees in Marketing Department?
+ans--
+mysql> insert into employee values(80,'ujjawal','haridwar','111166562',10,70000);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into employee values(90,'chintu','rishikesh','111166562',10,70000);
+Query OK, 1 row affected (0.11 sec)
+mysql> select * from employee;
++-------+---------+-----------+-----------+--------+--------+
+| empId | ename   | address   | mobile    | deptid | salary |
++-------+---------+-----------+-----------+--------+--------+
+|    30 | shubham | pune      | 2655      |     30 |  50000 |
+|    40 | sujeet  | mumbai    | 66546544  |     30 |  50000 |
+|    50 | Tomar   | UP        | 111166562 |     20 |  60000 |
+|    60 | vibhor  | BIJNOR    | 111166562 |     20 |  60000 |
+|    70 | farhan  | dehradun  | 111166562 |     20 |  60000 |
+|    80 | ujjawal | haridwar  | 111166562 |     10 |  70000 |
+|    90 | chintu  | rishikesh | 111166562 |     10 |  70000 |
++-------+---------+-----------+-----------+--------+--------+
+7 rows in set (0.00 sec)
+
+mysql> select * from department;
++-----+-----------+----------+
+| did | dname     | location |
++-----+-----------+----------+
+|  10 | marketing | delhi    |
+|  20 | sales     | pune     |
+|  30 | Accounts  | banglore |
+|  40 | HR        | mumbai   |
++-----+-----------+----------+
+4 rows in set (0.00 sec)
+
+
+2(vi)Using SQL register 2 employees in HR Department?
+ans--
+mysql> insert into employee values(100,'suresh','chandigarh','3266562',40,80000);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into employee values(110,'mahesh','karnal','966562',40,80000);
+Query OK, 1 row affected (0.11 sec)
+mysql> select * from employee;
++-------+---------+------------+-----------+--------+--------+
+| empId | ename   | address    | mobile    | deptid | salary |
++-------+---------+------------+-----------+--------+--------+
+|    30 | shubham | pune       | 2655      |     30 |  50000 |
+|    40 | sujeet  | mumbai     | 66546544  |     30 |  50000 |
+|    50 | Tomar   | UP         | 111166562 |     20 |  60000 |
+|    60 | vibhor  | BIJNOR     | 111166562 |     20 |  60000 |
+|    70 | farhan  | dehradun   | 111166562 |     20 |  60000 |
+|    80 | ujjawal | haridwar   | 111166562 |     10 |  70000 |
+|    90 | chintu  | rishikesh  | 111166562 |     10 |  70000 |
+|   100 | suresh  | chandigarh | 3266562   |     40 |  80000 |
+|   110 | mahesh  | karnal     | 966562    |     40 |  80000 |
++-------+---------+------------+-----------+--------+--------+
+9 rows in set (0.04 sec)
+2(vi)Write a SQL query to get the total salary of employees, department-wise?
+ans--
+mysql> select deptid, sum(salary) from employee group by deptid;
++--------+-------------+
+| deptid | sum(salary) |
++--------+-------------+
+|     10 |      140000 |
+|     20 |      180000 |
+|     30 |      100000 |
+|     40 |      160000 |
++--------+-------------+
+4 rows in set (0.00 sec)
+
+2(vii)Write a SQL query to get all the employee details who enrolled in the Sales
+department?
+mysql> select empid,ename,address,mobile,deptid,salary,dname,location from employee inner join department on employee.deptid=department.did and dname='sales';
++-------+--------+----------+-----------+--------+--------+-------+----------+
+| empid | ename  | address  | mobile    | deptid | salary | dname | location |
++-------+--------+----------+-----------+--------+--------+-------+----------+
+|    50 | Tomar  | UP       | 111166562 |     20 |  60000 | sales | pune     |
+|    60 | vibhor | BIJNOR   | 111166562 |     20 |  60000 | sales | pune     |
+|    70 | farhan | dehradun | 111166562 |     20 |  60000 | sales | pune     |
++-------+--------+----------+-----------+--------+--------+-------+----------+
+3 rows in set (0.00 sec)
+
+
+
+2(viii)Write a SQL query to get the Department details for an employee based on the
+empId?
+ans--
+mysql> select empid,ename,address,mobile,deptid,salary,dname,location from employee inner join department on employee.deptid=department.did;
++-------+---------+------------+-----------+--------+--------+-----------+----------+
+| empid | ename   | address    | mobile    | deptid | salary | dname     | location |
++-------+---------+------------+-----------+--------+--------+-----------+----------+
+|    80 | ujjawal | haridwar   | 111166562 |     10 |  70000 | marketing | delhi    |
+|    90 | chintu  | rishikesh  | 111166562 |     10 |  70000 | marketing | delhi    |
+|    50 | Tomar   | UP         | 111166562 |     20 |  60000 | sales     | pune     |
+|    60 | vibhor  | BIJNOR     | 111166562 |     20 |  60000 | sales     | pune     |
+|    70 | farhan  | dehradun   | 111166562 |     20 |  60000 | sales     | pune     |
+|    30 | shubham | pune       | 2655      |     30 |  50000 | Accounts  | banglore |
+|    40 | sujeet  | mumbai     | 66546544  |     30 |  50000 | Accounts  | banglore |
+|   100 | suresh  | chandigarh | 3266562   |     40 |  80000 | HR        | mumbai   |
+|   110 | mahesh  | karnal     | 966562    |     40 |  80000 | HR        | mumbai   |
++-------+---------+------------+-----------+--------+--------+-----------+----------+
+9 rows in set (0.00 sec)
+
+
+2(ix)Write a SQL query to get the second highest salary paid employee from the
+Employee table?
+ans--
+mysql> select * from employee where salary = (select max(salary) from employee where salary < (select max(salary) from employee));
++-------+---------+-----------+-----------+--------+--------+
+| empId | ename   | address   | mobile    | deptid | salary |
++-------+---------+-----------+-----------+--------+--------+
+|    80 | ujjawal | haridwar  | 111166562 |     10 |  70000 |
+|    90 | chintu  | rishikesh | 111166562 |     10 |  70000 |
++-------+---------+-----------+-----------+--------+--------+
+2 rows in set (0.00 sec)
+
+
+
+

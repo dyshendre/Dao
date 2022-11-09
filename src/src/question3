@@ -1,0 +1,88 @@
+Question 3: How many types of relationships exist among tables in the Database? Explain with some examples, 
+and also mention how to establish these relationships among tables with examples.
+
+Answer3:- 
+		It is very much important to have a relationship between the tables in the Database to avoid the data-
+		redundancy and also to have a communication between the tables. The relational database collects different types
+		of data sets that use the tables,records and columns. There is a need of well defined relationship between database
+		tables so that the relational databases can be easily stored. 
+		
+		
+		There are three types of relationships that exist among the tables in the database.
+		
+	1.  One to One Relationship.
+	2.  one to Many Relationship.
+	3.  Many to many Relationship.
+	
+		
+		1. One to One Relationship:-- 
+		   It is used to create a relationship between two tables in which a single row of the first table can only be 
+		   related to one and only one records of the second table. Similarly the record of second table can also be
+		   related to any one row of the first table. 
+		   
+		   example:
+			create table Person 
+		(
+			pid int primary key,
+			pname varchar(12),
+			address varchar(12),
+			mobile varchar(12),
+			email varchar(12)
+		);
+		
+		
+		create table DL
+		(
+		dlid int primary key,
+		issuedate date,
+		expdate date,
+		rto varchar(12),
+		personid int unique,
+		foreign key( personid) refrences Person(pid)	
+		);
+			
+		   
+		2. One to Many Relationship:-- 
+		   It is used to create a relationship between two tables in which a single row of the first table can  be 
+		   related to one or more records of the second table. But records of second table can only relate to the only
+		   row in the first table.   
+		   
+		   example: 
+		   	
+		   	Dept(did, dname, location);
+		   	Emp(eid, ename, address, salary, foreign key(deptid) refrences deptid(did);
+		   	
+		   
+		3. Many to Many Relationship:-- 
+		   It is used to create a relationship between two tables in which each record of the first table can be 
+		   related to any records of the second table. Similarly the each record of second table can also be
+		   related to any record of the first table. It is also Known as N:N relationship. Whenever we have a many to many 
+		   relationship, we need to take the help of 3rd linking table. 
+		   
+		   example:  
+		   	     
+		   	     
+		  create table Student
+		(
+		roll int primary key,
+		sname varchar(12),
+		address varchar(12),
+		mobile varchar(12),
+		);
+		
+		
+		create table course
+		(
+		cid int primary key,
+		fee int,
+		duration varchar(12),	
+		);
+		
+		
+		create table student_course
+		(
+		roll int,
+		cid int,
+		foreign key (roll) refrences student(roll),
+		foreign key (cid) refrences course(cid),	
+		);
